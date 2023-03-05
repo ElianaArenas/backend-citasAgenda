@@ -288,8 +288,7 @@ horarioCtrl.solicitudHorario = async (req, res) => {
         socio3,
         autor4,
         socio4,
-        horaSolicitud,
-        aleatorio: true
+        horaSolicitud
       });
       await nuevoTurno.save();
       switch (dia){
