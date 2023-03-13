@@ -3,10 +3,10 @@ const config = require("../config");
 
 const ImgempresaSchema = new Schema({
     imagen: String,
-    //number: Number,
+    tipo: String,
     ver: Boolean,
-    presentar: Boolean
-    
+    presentar: Boolean,
+    descripcion: String
     }, {
     timestaps: true
 });

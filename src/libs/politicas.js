@@ -10,23 +10,19 @@ interFunc.seleccionAleatoria = async (opcion) => {
     //console.log("funcion turno aleatorio")
     //console.log(opcion)
     const empresas = await Empresa.find();
-    const tiempo = empresas[0].intervaloTurnoAleatorio;
+    const tiempo = empresas[0].intervaloTurnoAleatorioMañana;
 
-    const tiempo2 = empresas[0].intervaloTurnoAleatorio2;
+    const tiempo2 = empresas[0].intervaloTurnoAleatorioTarde;
 
-    //console.log(tiempo)
-    var intervalo = `37 21 * * *`;
-
-    var intervalo2 = `45 21 * * *`
+    console.log(tiempo, tiempo2)
     //console.log(intervalo)
     if (opcion == true) {
-        console.log('Holaaa');
         //*/3 * * * * * cada 3 segundos
-        cron.schedule(intervalo, async() => {
+        cron.schedule(tiempo, async() => {
             console.log('Turno aleatorio 1');
             await generateTurno({ agendoAyer: false, aleatorio: true});
         });
-        cron.schedule(intervalo2, async() => {
+        cron.schedule(tiempo2, async() => {
             console.log('Turno aleatorio 2');
             await generateTurno({ agendoAyer: true, aleatorio: true});
         });

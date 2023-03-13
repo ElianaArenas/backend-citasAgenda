@@ -175,22 +175,24 @@ empresasCtrl.updateEmpresaHorarioAleatorio = async (req, res) => {
   
     const {
       aleatorio,
-      tiempo
+      tiempoMañana,
+      tiempoTarde
     } = req.body;
     await Empresa.findOneAndUpdate({ _id: req.params.id  }, {
       $set: {
-        intervaloTurnoAleatorio: tiempo,
+        intervaloTurnoAleatorioMañana: tiempoMañana,
+        intervaloTurnoAleatorioTarde: tiempoTarde
       }
     })
     if (empresaFound.aleatorio == false && aleatorio == true) {
       //crea la tarea de asignar aleatoriamente los turnos o clases
       console.log('entro');
-      seleccionAleatoria(true,tiempo);
+      seleccionAleatoria(true);
     } 
     if (empresaFound.aleatorio == true && aleatorio == false) {
       //desactiva la tarea de asignar aleatoriamente los turnos o clases
       console.log('entro 2');
-      seleccionAleatoria(false,tiempo);
+      seleccionAleatoria(false);
     } 
 
     await Empresa.findOneAndUpdate({ _id: req.params.id  }, {
