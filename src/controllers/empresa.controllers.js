@@ -393,13 +393,14 @@ empresasCtrl.uploadImgEmpresa = async (req, res) => {
         const { filename } = req.files[i]
         tipoImg = req.files[i].mimetype.slice(6)
         //newImgEmp.setImagen(filename + '.' + tipoImg)
-        newImgEmp.setImagen(filename)
+        newImgEmp.setImagen(filename, req.body.tipo, req.body.descripcion, req.body.titulo)
       }
       const verImgEmp = await ImgEmp.findOne({ imagen: newImgEmp.imagen });
       if(verImgEmp){
         console.log("la imagen ya esta en bd")
       } else {
         console.log("la imagen no esta en bd")
+        console.log(newImgEmp);
         const savedImgEmp = await newImgEmp.save();
         console.log(savedImgEmp)
       }

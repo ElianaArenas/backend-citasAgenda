@@ -6,13 +6,17 @@ const ImgempresaSchema = new Schema({
     tipo: String,
     ver: Boolean,
     presentar: Boolean,
+    titulo: String,
     descripcion: String
     }, {
     timestaps: true
 });
 
-ImgempresaSchema.methods.setImagen = function setImagen (filename) {
+ImgempresaSchema.methods.setImagen = function setImagen (filename, type, description, titulo) {
     const {local, host, port} = config
+    this.tipo = type;
+    this.descripcion = description;
+    this.titulo = titulo;
     if (local == 1){
         //el aplicativo se encuentra de manera local, no en un servidor remoto
         this.imagen = `${host}:${port}/publicEmpresa/${filename}`
