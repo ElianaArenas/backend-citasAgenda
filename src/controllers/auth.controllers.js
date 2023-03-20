@@ -144,7 +144,7 @@ authCtrl.forgotPassword = async (req, res) => {
     const token = jwt.sign({id: userFound._id, email : userFound.email}, config.jwtSecretReset, {expiresIn: '10m'});
     if (local ==1){
       //el aplicativo se encuentra de manera local, no en un servidor remoto
-      verificationLink = `${cli_host}:${cli_port}/new-password/${token}`;
+      verificationLink = `${cli_host}:4200/new-password/${token}`;
     } else {
       //el aplicativo se encuentra en un servidor remoto como heroku
       verificationLink = `${cli_host}/new-password/${token}`;
@@ -172,7 +172,7 @@ authCtrl.forgotPassword = async (req, res) => {
       subject: "Restablecimiento de contraseña", // Subject line
       text: "Se ha solicitado restablecer la contraseña de este usuario", // plain text body
       html: `
-        <b>Da click en el siguiente enlace para redireccionarse al modulo de cambio de contraseña o copie el link en su navegador </b>
+        <b>Da click en el siguiente enlace para redireccionarse al modulo de cambio de contraseña o copie el link en su navegador</b><br>
         <a href="${verificationLink}">${verificationLink}</a>
       `, // html body
     });
