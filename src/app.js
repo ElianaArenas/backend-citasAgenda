@@ -3,6 +3,7 @@ const express = require("express");
 const bodyParser = require('body-parser');
 const morgan = require("morgan");
 const cors = require("cors");
+const requestIp = require('request-ip');
 const { createRoles, EmpresaDefault, usuariosPorDefecto } = require("./libs/initialSetup");
 const { activarIntervalos } = require("./libs/politicas");
 
@@ -47,7 +48,9 @@ app.use('/publicEmpresa', express.static(`${process.cwd()}/src/public/imagesEmpr
     await EmpresaDefault();
     await usuariosPorDefecto();
     await activarIntervalos();
-    
+    const clientIp = requestIp.getClientIp(req);
+
+    console.log({clientIp});
 })();
 
 
