@@ -44,13 +44,15 @@ app.use('/publicEmpresa', express.static(`${process.cwd()}/src/public/imagesEmpr
 
 
 (async()=>{
-    await createRoles();
-    await EmpresaDefault();
-    await usuariosPorDefecto();
-    await activarIntervalos();
+
     const clientIp = requestIp.getClientIp(req);
 
     console.log({clientIp});
+    // await createRoles();
+    // await EmpresaDefault();
+    // await usuariosPorDefecto();
+    // await activarIntervalos();
+
 })();
 
 
