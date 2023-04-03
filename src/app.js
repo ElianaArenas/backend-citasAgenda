@@ -38,7 +38,7 @@ app.use("/api/multa", require("./routes/multa"));
 app.use("/api/auth", require("./routes/auth")); //auth
 
 app.use('/public', express.static(`${process.cwd()}/src/public/imagesUser`));
-app.use(express.static(`${process.cwd()}/src/public/imagesEmpresa`));
+app.use('/publicEmpresa', express.static(`${process.cwd()}/src/public/imagesEmpresa`));
 // console.log(process.cwd())
 
 
