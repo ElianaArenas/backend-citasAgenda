@@ -10,6 +10,7 @@ const transporter = nodemailer.createTransport({
     pass: 'pjkpcxsetiqnyflj', // generated ethereal password
   },
   logger: true
+  
 });
 
 
