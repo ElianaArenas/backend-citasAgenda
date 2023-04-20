@@ -16,7 +16,7 @@ Proyecto backend con NodeJS, Express y Mongo para el agendamiento de citas y eve
 
 - Poner las variables de entorno necesarias poder correr el proyecto en un archivo .env en el root del proyecto.
 
-``
+`
 MONGODB_URI= //Agregar la mongo uri
 
 MONGODB_LOCAL=mongodb://localhost/databaseagenda
@@ -36,11 +36,10 @@ CLI_HOST=http://localhost
 MAILUSER: citagenda50@gmail.com  
 
 MAILPSSWD = cita2022
+`
+## Descargar modulos de Node
 
-``
-## Empezando
-
-`  $ npm install // Descargar modulos de Node`
+`  $ npm install `
 
 ## Correr el proyecto
 
