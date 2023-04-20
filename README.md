@@ -21,7 +21,7 @@ Poner las variables de entorno necesarias para poder correr el proyecto en un ar
 
 
 ``` 
-MONGODB_URI=                        # Agregar la mongo uri de Mongo Atlas
+MONGODB_URI=                                          # Agregar la mongo uri de Mongo Atlas
 
 MONGODB_LOCAL=mongodb://localhost/databaseagenda
 
@@ -37,9 +37,9 @@ CLI_PORT=3000
 
 CLI_HOST=http://localhost 
 
-MAILUSER:                      # Email para enviar los correos  
+MAILUSER:                                             # Email para enviar los correos  
 
-MAILPSSWD =                    # Contraseña del email
+MAILPSSWD =                                           # Contraseña del email
 
 ```
 
@@ -51,7 +51,6 @@ MAILPSSWD =                    # Contraseña del email
 
 ```
   $ npm start
-  
   
   $ npm run dev  # Modo desarrollo
 ```
