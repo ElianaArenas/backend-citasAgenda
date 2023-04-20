@@ -14,7 +14,10 @@ Proyecto backend con NodeJS, Express y Mongo para el agendamiento de citas y eve
 * [Express](https://expressjs.com/) is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
 * [Mongoose](https://mongoosejs.com/)
 
-- Poner las variables de entorno necesarias poder correr el proyecto en un archivo .env en el root del proyecto.
+
+## Variables de entorno
+
+Poner las variables de entorno necesarias poder correr el proyecto en un archivo .env en el root del proyecto.
 
 `
 MONGODB_URI= //Agregar la mongo uri
