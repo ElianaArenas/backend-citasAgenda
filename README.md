@@ -11,7 +11,7 @@ Proyecto backend con NodeJS, Express y Mongo para el agendamiento de citas y eve
 ## Construido con 🔩⚙
 
 
-* [Express](https://expressjs.com/) is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
+* [Express](https://expressjs.com/) 
 * [Mongoose](https://mongoosejs.com/)
 
 
