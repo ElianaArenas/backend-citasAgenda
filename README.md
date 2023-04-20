@@ -1,1 +1,56 @@
 # backend-citasAgenda
+
+Proyecto backend con NodeJS, Express y Mongo para el agendamiento de citas y eventos utilizado como recurso didáctico para la asignatura de programación web.
+
+## Pre-requisitos 📋
+
+- Tener instalado Nodejs
+
+* [Node.js](https://nodejs.org/en/blog/release/v16.17.0/) - Version 16.17
+
+## Construido con 🔩⚙
+
+
+* [Express](https://expressjs.com/) is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
+* [Mongoose](https://mongoosejs.com/)
+
+- Poner las variables de entorno necesarias poder correr el proyecto en un archivo .env en el root del proyecto.
+
+``
+MONGODB_URI= //Agregar la mongo uri
+
+MONGODB_LOCAL=mongodb://localhost/databaseagenda
+
+PORT=4000
+
+HOST=0.0.0.0
+
+HOST_HTTP=http://localhost
+
+LOCAL=1
+
+CLI_PORT=3000
+
+CLI_HOST=http://localhost 
+
+MAILUSER: citagenda50@gmail.com  
+
+MAILPSSWD = cita2022
+
+``
+## Empezando
+
+`  $ npm install // Descargar modulos de Node`
+
+## Correr el proyecto
+
+``
+  $ npm start
+  $ npm run dev // Pendiente de cambios
+``
+
+## Despliegue
+
+Al hacer push a la rama master, se hará el despliegue de manera automatica a Railway.
+
+Made with ❤
