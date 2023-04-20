@@ -6,7 +6,7 @@ Proyecto backend con NodeJS, Express y Mongo para el agendamiento de citas y eve
 
 - Tener instalado Nodejs
 
-* [Node.js](https://nodejs.org/en/blog/release/v16.17.0/) - Version 16.17
+* [Node.js](https://nodejs.org/en/blog/release/v18.13.0/) - Version 18.13.0
 
 ## Construido con 🔩⚙
 
@@ -15,12 +15,13 @@ Proyecto backend con NodeJS, Express y Mongo para el agendamiento de citas y eve
 * [Mongoose](https://mongoosejs.com/)
 
 
-## Variables de entorno 🟡
+## Variables de entorno 📌
 
-Poner las variables de entorno necesarias poder correr el proyecto en un archivo .env en el root del proyecto.
+Poner las variables de entorno necesarias para poder correr el proyecto en un archivo .env en la raíz del proyecto.
 
 
-MONGODB_URI= //Agregar la mongo uri
+``` 
+MONGODB_URI=                                          # Agregar la mongo uri de Mongo Atlas
 
 MONGODB_LOCAL=mongodb://localhost/databaseagenda
 
@@ -36,10 +37,11 @@ CLI_PORT=3000
 
 CLI_HOST=http://localhost 
 
-MAILUSER: citagenda50@gmail.com  
+MAILUSER:                                             # Email para enviar los correos  
 
-MAILPSSWD = cita2022
+MAILPSSWD =                                           # Contraseña del email
 
+```
 
 ## Descargar modulos de Node
 
@@ -47,15 +49,18 @@ MAILPSSWD = cita2022
 
 ## Correr el proyecto
 
-`
+```
   $ npm start
   
-
-  $ npm run dev 
-`
+  $ npm run dev  # Modo desarrollo
+```
 
 ## Despliegue
 
-Al hacer push a la rama master, se hará el despliegue de manera automatica a Railway.
+Al hacer push a la rama master, se hará el despliegue de manera automatica a [Railway](https://railway.app/).
+
+
+
+
 
 Made with ❤
