@@ -5,6 +5,7 @@ const Turno = require("../models/Turno");
 const Empresa = require("../models/empresa");
 const Clase = require("../models/clase");
 const { granDemanda } = require("../libs/politicas");
+const  sendMail = require("../utils/send-email");
 
 horarioCtrl.getHorarios = async (req, res) => {
   try {
@@ -634,6 +635,14 @@ horarioCtrl.solicitudHorario = async (req, res) => {
     }
     try {
       await Horario.findOneAndUpdate({ _id: req.params.id }, { horario });
+        sendMail('Notificación cancelar turno',
+        `
+        Reciba un cordial saludo:<br><br>
+   
+        El administrador ${req.body.user} a cancelado el turno
+        `,
+         'elianaarenasm@gmail.com'
+        )
     } catch (error) {
       console.log(error)
       res.json(error.message);

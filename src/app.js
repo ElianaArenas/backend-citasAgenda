@@ -35,6 +35,7 @@ app.use("/api/leccion", require("./routes/lecciones.js"));
 app.use("/api/turnos", require("./routes/turnos.js"));
 app.use("/api/notificacion", require("./routes/notificacion.js"));
 app.use("/api/multa", require("./routes/multa"));
+app.use("/api/imgEmpresa", require("./routes/imgEmpresa"));
 app.use("/api/auth", require("./routes/auth")); //auth
 
 app.use('/public', express.static(`${process.cwd()}/src/public/imagesUser`));
