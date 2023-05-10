@@ -5,7 +5,7 @@ const config = require("../config");
 const Role = require("../models/Role");
 const nodemailer = require('nodemailer');
 
-const {local, cli_host, cli_port} = config
+const { local, cli_host, cli_port } = config
 
 //registrarse
 authCtrl.singUp = async (req, res) => {
@@ -34,11 +34,11 @@ authCtrl.singUp = async (req, res) => {
     } = req.body;
     //restricciones
     const verificaEmail = await User.findOne({ email: req.body.email })
-    if (verificaEmail)  return res.status(400).json({ message: "El email ya se encuentra registrado" });
+    if (verificaEmail) return res.status(400).json({ message: "El email ya se encuentra registrado" });
     const verificaCodigo = await User.findOne({ codigo: req.body.codigo })
-    if (verificaCodigo)  return res.status(400).json({ message: "El codigo ya se encuentra registrado" });
+    if (verificaCodigo) return res.status(400).json({ message: "El codigo ya se encuentra registrado" });
     const verificaDocumento = await User.findOne({ documento: req.body.documento })
-    if (verificaDocumento)  return res.status(400).json({ message: "El documento ya se encuentra registrado" });
+    if (verificaDocumento) return res.status(400).json({ message: "El documento ya se encuentra registrado" });
     //en la carpeta libs se valida si existe el usuario
     //const userFound = User.find({email})
     const newUser = new User({
@@ -49,7 +49,7 @@ authCtrl.singUp = async (req, res) => {
       imagen,
       codigo,
       documento,
-      activo:"false",
+      activo: "false",
       idFamiliar,
       telefono2,
       direccion,
@@ -99,7 +99,7 @@ authCtrl.singIn = async (req, res) => {
       "rol"
     );
 
-    if (!userFound)  return res.status(400).json({ message: "No se encontró el correo ingresado" });
+    if (!userFound) return res.status(400).json({ message: "No se encontró el correo ingresado" });
 
     const matchPassword = await User.comparePassword(
       req.body.contra,
@@ -123,26 +123,26 @@ authCtrl.singIn = async (req, res) => {
 };
 
 authCtrl.forgotPassword = async (req, res) => {
-  const {email} =req.body;
+  const { email } = req.body;
   if (!(email)) {
-    return res.status(400).json({message: "el email es requerido"});
+    return res.status(400).json({ message: "el email es requerido" });
   }
-  
+
   const message = "Revisa tu correo electronico para cambiar tu contraseña";
   let verificationLink;
   let emailStatus = "OK";
-  
+
   try {
     const userFound = await User.findOne({ email: req.body.email });
     console.log(userFound)
     if (!userFound) {
       console.log("no se encontro el correo electronico")
       return res.status(400).json({ message: "Revise su correo electronico" });
-    } 
+    }
     console.log("email encontrado")
 
-    const token = jwt.sign({id: userFound._id, email : userFound.email}, config.jwtSecretReset, {expiresIn: '10m'});
-    if (local ==1){
+    const token = jwt.sign({ id: userFound._id, email: userFound.email }, config.jwtSecretReset, { expiresIn: '10m' });
+    if (local == 1) {
       //el aplicativo se encuentra de manera local, no en un servidor remoto
       verificationLink = `${cli_host}:4200/new-password/${token}`;
     } else {
@@ -151,7 +151,7 @@ authCtrl.forgotPassword = async (req, res) => {
     }
     userFound.resetToken = token;
 
-  //TODO: sendEmail
+    //TODO: sendEmail
     const transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
       port: 465,
@@ -161,7 +161,7 @@ authCtrl.forgotPassword = async (req, res) => {
         pass: 'pjkpcxsetiqnyflj', // generated ethereal password
       },
       tls: {
-        rejectUnautorized: false 
+        rejectUnautorized: false
       }
     });
     emailUser = userFound.email
@@ -182,20 +182,21 @@ authCtrl.forgotPassword = async (req, res) => {
   } catch (error) {
     emailStatus = error;
     console.log(error)
-    return res.status(400).json({ message: "algo no ha ido bien"});
+    return res.status(400).json({ message: "algo no ha ido bien" });
   }
-  res.json({ message, info: emailStatus});
+  res.json({ message, info: emailStatus });
 }
 
 
 authCtrl.newPassword = async (req, res) => {
-  try{
-  const{newPassword} = req.body;
-  const resetToken = req.headers.reset;
+  try {
+    const { newPassword } = req.body;
+    const resetToken = req.headers.reset;
 
-  if(!(resetToken && newPassword)){
-   return res.status(400).json({message: "todos los campos son requeridos"});
-  }
+
+    if (!(resetToken && newPassword)) {
+      return res.status(400).json({ message: "todos los campos son requeridos" });
+    }
     const userFound = await User.findOne({ resetToken: req.headers.reset })
     userFound.contra = newPassword;
     userFound.contra = await userFound.cifrarPass(userFound.contra);
@@ -203,21 +204,21 @@ authCtrl.newPassword = async (req, res) => {
     await userFound.save();
   } catch (error) {
     console.log(error)
-    return res.status(401).json({message: "algo no se guardo"})
+    return res.status(401).json({ message: "algo no se guardo" })
   }
-  return res.json({message: "contraseña actualizada"})
+  return res.json({ message: "contraseña actualizada" })
 }
 
 
 authCtrl.emailAjax = async (req, res) => {
-  try{
+  try {
     console.log(req.body)
     const verificaEmail = await User.findOne({ email: req.params.email })
-    if (verificaEmail)  return res.status(200).json(true);
+    if (verificaEmail) return res.status(200).json(true);
     else return res.status(200).json(false);
   } catch (error) {
     console.log(error)
-    return res.status(401).json({message: "algo no se guardo"})
+    return res.status(401).json({ message: "algo no se guardo" })
   }
 }
 
